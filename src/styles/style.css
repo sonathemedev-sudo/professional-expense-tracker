@@ -134,13 +134,14 @@ button:hover {
   }
 
   .filter-section {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 
   .header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 15px;
+    gap: 0;
+    padding: 1rem;
   }
 
   table {
@@ -215,7 +216,11 @@ button:hover {
 }
 
 @media (max-width: 768px) {
-
+  body {
+    td {
+      padding: 1rem;
+    }
+  }
   .summary-grid {
     grid-template-columns: 1fr;
   }
