@@ -10,13 +10,17 @@ function TransactionCard({
       className={`transaction-card ${item.type}`}
     >
 
-      <h3>{item.text}</h3>
+      <div className="transaction-top">
 
-      <p>₹ {item.amount}</p>
+        <h3>{item.text}</h3>
 
-      <p>{item.type}</p>
+        <h3>₹ {item.amount}</h3>
 
-      <p>{item.date}</p>
+      </div>
+
+        <p>{item.type}</p>
+
+        <p>{item.date}</p>
 
       <span className="badge">
         {item.category}

@@ -4,6 +4,7 @@ import TransactionForm from "./components/TransactionForm"
 import TransactionList from "./components/TransactionList"
 import Analytics from "./components/Analytics"
 import ExpenseChart from "./components/ExpenseChart"
+import Header from "./components/Header"
 
 function App() {
 
@@ -142,7 +143,7 @@ function App() {
   return (
     <div className={darkMode ? "container dark" : "container"}>
 
-      <h1>Expense Tracker Dashboard</h1>
+      <Header />
 
       <button
         onClick={() => setDarkMode(!darkMode)}
