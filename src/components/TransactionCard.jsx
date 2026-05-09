@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 function TransactionCard({
   item,
   index,
@@ -6,8 +8,11 @@ function TransactionCard({
 }) {
 
   return (
-    <div
-      className={`transaction-card ${item.type}`}
+    <motion.div
+    className={`transaction-card ${item.type}`}
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.3 }}
     >
 
       <div className="transaction-top">
@@ -40,7 +45,7 @@ function TransactionCard({
 
       <hr />
 
-    </div>
+    </motion.div>
   );
 }
 

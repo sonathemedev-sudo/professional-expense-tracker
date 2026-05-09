@@ -5,6 +5,8 @@ import TransactionList from "./components/TransactionList"
 import Analytics from "./components/Analytics"
 import ExpenseChart from "./components/ExpenseChart"
 import Header from "./components/Header"
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 function App() {
 
@@ -96,6 +98,7 @@ function App() {
     updatedTransactions[editIndex] = newTransaction;
 
     setTransactions(updatedTransactions);
+    toast.success("Transaction Added");
 
     setEditIndex(null);
 
@@ -121,6 +124,7 @@ function App() {
     );
 
     setTransactions(updatedTransactions);
+    toast.error("Transaction Deleted");
   }
 
   function editTransaction(index) {
@@ -150,6 +154,8 @@ function App() {
       >
         {darkMode ? "Light Mode" : "Dark Mode"}
       </button>
+      
+      <br />
 
       <SummaryCard
         balance={balance}
@@ -211,6 +217,8 @@ function App() {
         deleteTransaction={deleteTransaction}
         editTransaction={editTransaction}
       />
+
+      <ToastContainer />
 
     </div>
   );
