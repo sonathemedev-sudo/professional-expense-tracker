@@ -6,17 +6,28 @@ function SummaryCard({
 }) {
 
   return (
-    <div className="summary">
 
-      <h2>Balance: ₹ {balance}</h2>
+    <div className="summary-grid">
 
-      <h3>Income: ₹ {income}</h3>
+      <div className="summary-card">
+        <h4>Balance</h4>
+        <h2>₹ {balance}</h2>
+      </div>
 
-      <h3>Expense: ₹ {expense}</h3>
+      <div className="summary-card">
+        <h4>Income</h4>
+        <h2>₹ {income}</h2>
+      </div>
 
-      <h3>Total Transactions: {total}</h3>
+      <div className="summary-card">
+        <h4>Expense</h4>
+        <h2>₹ {expense}</h2>
+      </div>
 
-      <hr />
+      <div className="summary-card">
+        <h4>Transactions</h4>
+        <h2>{total}</h2>
+      </div>
 
     </div>
   );

@@ -23,7 +23,7 @@ function ExpenseChart({ categoryTotals }) {
   ];
 
   return (
-    <div className="summary">
+    <div className="chart-container">
 
       <h2>Expense Chart</h2>
 

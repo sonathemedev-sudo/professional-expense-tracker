@@ -66,8 +66,6 @@ function TransactionForm({
         Add Transaction
       </button>
 
-      <hr />
-
     </div>
   );
 }

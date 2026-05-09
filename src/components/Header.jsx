@@ -2,18 +2,18 @@ function Header() {
 
   const today = new Date();
 
-  const formattedDate =
-    today.toDateString();
-
   return (
     <div className="header">
 
       <div>
+        <h1>Expense Dashboard</h1>
+        <p>
+          Track your income and expenses professionally
+        </p>
+      </div>
 
-        <h1>Expense Tracker</h1>
-
-        <p>{formattedDate}</p>
-
+      <div className="header-right">
+        <h3>{today.toDateString()}</h3>
       </div>
 
     </div>

@@ -6,6 +6,7 @@ import Analytics from "./components/Analytics"
 import ExpenseChart from "./components/ExpenseChart"
 import Header from "./components/Header"
 import { ToastContainer, toast } from "react-toastify"
+import Footer from "./components/Footer"
 import "react-toastify/dist/ReactToastify.css"
 
 function App() {
@@ -147,78 +148,91 @@ function App() {
   return (
     <div className={darkMode ? "container dark" : "container"}>
 
-      <Header />
+        <Header />
 
-      <button
-        onClick={() => setDarkMode(!darkMode)}
-      >
-        {darkMode ? "Light Mode" : "Dark Mode"}
-      </button>
-      
-      <br />
+        {/* <button
+          onClick={() => setDarkMode(!darkMode)}
+        >
+          {darkMode ? "Light Mode" : "Dark Mode"}
+        </button> */}
+        <div className="smry_anylst_wrpr">
+          <SummaryCard
+            balance={balance}
+            income={income}
+            expense={expense}
+            total={filteredTransactions.length}
+          />
 
-      <SummaryCard
-        balance={balance}
-        income={income}
-        expense={expense}
-        total={filteredTransactions.length}
-      />
-      
-      <br />
+          <div className="analytics-grid">
 
-      <Analytics
-        categoryTotals={categoryTotals}
-      />
+            <Analytics
+              categoryTotals={categoryTotals}
+            />
 
-      <ExpenseChart
-        categoryTotals={categoryTotals}
-      />
+            <ExpenseChart
+              categoryTotals={categoryTotals}
+            />
 
-      <hr />
+          </div>
+        </div>
 
-      <TransactionForm
-        text={text}
-        setText={setText}
-        amount={amount}
-        setAmount={setAmount}
-        type={type}
-        setType={setType}
-        date={date}
-        setDate={setDate}
-        addTransaction={addTransaction}
-        category={category}
-        setCategory={setCategory}
-      />
+        <hr />
 
-      <hr />
+        <div className="form-section">
 
-      <input
-        type="text"
-        placeholder="Search transaction"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+          <h2>Add Transaction</h2>
 
-      <select
-        value={filterType}
-        onChange={(e) => setFilterType(e.target.value)}
-      >
-        <option value="all">All</option>
-        <option value="income">Income</option>
-        <option value="expense">Expense</option>
-      </select>
+          <TransactionForm
+            text={text}
+            setText={setText}
+            amount={amount}
+            setAmount={setAmount}
+            type={type}
+            setType={setType}
+            date={date}
+            setDate={setDate}
+            category={category}
+            setCategory={setCategory}
+            addTransaction={addTransaction}
+          />
 
-      <button onClick={clearAllTransactions}>
-        Clear All
-      </button>
+        </div>
 
-      <TransactionList
-        filteredTransactions={filteredTransactions}
-        deleteTransaction={deleteTransaction}
-        editTransaction={editTransaction}
-      />
+        <hr />
 
-      <ToastContainer />
+        <div className="filter-section">
+
+          <input
+            type="text"
+            placeholder="Search transaction"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+
+          <select
+            value={filterType}
+            onChange={(e) => setFilterType(e.target.value)}
+          >
+            <option value="all">All</option>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+
+          <button onClick={clearAllTransactions}>
+            Clear All
+          </button>
+
+        </div>
+
+        <TransactionList
+          filteredTransactions={filteredTransactions}
+          deleteTransaction={deleteTransaction}
+          editTransaction={editTransaction}
+        />
+
+        <ToastContainer />
+
+        <Footer />
 
     </div>
   );

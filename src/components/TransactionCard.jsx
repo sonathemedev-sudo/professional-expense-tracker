@@ -8,44 +8,48 @@ function TransactionCard({
 }) {
 
   return (
-    <motion.div
-    className={`transaction-card ${item.type}`}
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.3 }}
+
+    <motion.tr
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
     >
 
-      <div className="transaction-top">
+      <td>{item.text}</td>
 
-        <h3>{item.text}</h3>
+      <td>₹ {item.amount}</td>
 
-        <h3>₹ {item.amount}</h3>
+      <td>
+        <span className={item.type}>
+          {item.type}
+        </span>
+      </td>
 
-      </div>
+      <td>
+        <span className="badge">
+          {item.category}
+        </span>
+      </td>
 
-        <p>{item.type}</p>
+      <td>{item.date}</td>
 
-        <p>{item.date}</p>
+      <td>
 
-      <span className="badge">
-        {item.category}
-      </span>
-
-      <button
-        onClick={() => editTransaction(index)}
+        <button
+          onClick={() => editTransaction(index)}
         >
-       Edit
-       </button>
+          Edit
+        </button>
 
-      <button
-        onClick={() => deleteTransaction(index)}
-      >
-        Delete
-      </button>
+        <button
+          onClick={() => deleteTransaction(index)}
+        >
+          Delete
+        </button>
 
-      <hr />
+      </td>
 
-    </motion.div>
+    </motion.tr>
   );
 }
 
