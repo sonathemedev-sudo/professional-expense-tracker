@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import SummaryCard from "./components/SummaryCard"
 import TransactionForm from "./components/TransactionForm"
 import TransactionList from "./components/TransactionList"
+import Analytics from "./components/Analytics"
+import ExpenseChart from "./components/ExpenseChart"
 
 function App() {
 
@@ -27,6 +29,8 @@ function App() {
   const [editIndex, setEditIndex] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
 
+  const [date, setDate] = useState("");
+  const [category, setCategory] = useState("Food");
 
 
 
@@ -51,6 +55,20 @@ function App() {
     return matchesSearch && matchesFilter;
   });
 
+  const categoryTotals = {};
+
+  transactions.forEach((item) => {
+
+    if (categoryTotals[item.category]) {
+
+      categoryTotals[item.category] += Number(item.amount);
+
+    } else {
+
+      categoryTotals[item.category] = Number(item.amount);
+    }
+  });
+
   useEffect(() => {
 
     localStorage.setItem(
@@ -65,7 +83,9 @@ function App() {
   const newTransaction = {
     text,
     amount,
-    type
+    type,
+    date,
+    category
   };
 
   if (editIndex !== null) {
@@ -89,6 +109,8 @@ function App() {
     setText("");
     setAmount("");
     setType("expense");
+    setDate("");
+    setCategory("Food");
   }
 
   function deleteTransaction(indexToDelete) {
@@ -107,6 +129,8 @@ function App() {
     setText(transaction.text);
     setAmount(transaction.amount);
     setType(transaction.type);
+    setDate(transaction.date);
+    setCategory(transaction.category);
 
     setEditIndex(index);
   }
@@ -132,6 +156,16 @@ function App() {
         expense={expense}
         total={filteredTransactions.length}
       />
+      
+      <br />
+
+      <Analytics
+        categoryTotals={categoryTotals}
+      />
+
+      <ExpenseChart
+        categoryTotals={categoryTotals}
+      />
 
       <hr />
 
@@ -142,7 +176,11 @@ function App() {
         setAmount={setAmount}
         type={type}
         setType={setType}
+        date={date}
+        setDate={setDate}
         addTransaction={addTransaction}
+        category={category}
+        setCategory={setCategory}
       />
 
       <hr />

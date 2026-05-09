@@ -16,6 +16,12 @@ function TransactionCard({
 
       <p>{item.type}</p>
 
+      <p>{item.date}</p>
+
+      <span className="badge">
+        {item.category}
+      </span>
+
       <button
         onClick={() => editTransaction(index)}
         >

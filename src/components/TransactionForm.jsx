@@ -5,6 +5,10 @@ function TransactionForm({
   setAmount,
   type,
   setType,
+  date,
+  setDate,
+  category,
+  setCategory,
   addTransaction
 }) {
 
@@ -38,6 +42,25 @@ function TransactionForm({
       </select>
 
       <br /><br />
+
+      <input
+        type="date"
+        value={date}
+        onChange={(e) => setDate(e.target.value)}
+        />
+
+        <br /><br />
+
+        <select
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        >
+        <option value="Food">Food</option>
+        <option value="Travel">Travel</option>
+        <option value="Shopping">Shopping</option>
+        <option value="Salary">Salary</option>
+        <option value="Bills">Bills</option>
+        </select>
 
       <button onClick={addTransaction}>
         Add Transaction
